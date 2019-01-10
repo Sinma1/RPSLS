@@ -1,11 +1,12 @@
-from versions import ClassicVersion
+from versions import ClassicVersion, ExtendedVersion
 
 
 class UserInterface:
     def __init__(self):
         self.version = None
         self.versions = {
-            'c': ClassicVersion
+            'c': ClassicVersion,
+            'e': ExtendedVersion
         }
 
     def select_version(self):
