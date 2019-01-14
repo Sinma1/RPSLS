@@ -1,3 +1,6 @@
+"""
+File contains tests for Classic Version of this game.
+"""
 import unittest
 from collections import Counter
 
@@ -6,7 +9,9 @@ from shapes import Shapes
 
 
 class TestClassic(unittest.TestCase):
-
+    """
+    Class contains tests for classic version of this game.
+    """
     def test_get_shapes(self):
         ver = ClassicVersion()
         func = ver.get_shapes

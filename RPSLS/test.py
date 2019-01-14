@@ -2,8 +2,8 @@ import os
 import unittest
 
 if __name__ == '__main__':
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    loader = unittest.TestLoader()
+    DIR_PATH = os.path.dirname(os.path.realpath(__file__))
+    LOADER = unittest.TestLoader()
 
-    runner = unittest.TextTestRunner()
-    runner.run(loader.discover(f"{dir_path}/tests"))
+    RUNNER = unittest.TextTestRunner()
+    RUNNER.run(LOADER.discover(f"{DIR_PATH}/tests"))

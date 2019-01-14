@@ -1,9 +1,17 @@
+"""
+File cointains logic of the game with base class
+and classes that inherit from that base with expanded functionality.
+"""
 import random
 
 from shapes import Shapes
 
 
 class BaseVersion:
+    """
+    Base class which only contains function for performing game actions.
+    Derived class should extend this class with interactions, matchups and shortcuts.
+    """
     def __init__(self):
         self.interactions = {}
         self.matchups = {}
@@ -15,6 +23,7 @@ class BaseVersion:
     def get_interaction(self, winner, loser):
         if (winner, loser) in self.interactions:
             return self.interactions[(winner, loser)]
+        raise ValueError
 
     def get_result(self, first, second):
         if first == second:
@@ -31,6 +40,10 @@ class BaseVersion:
 
 
 class ClassicVersion(BaseVersion):
+    """
+    Class that inherit from BaseVersion and implements
+    login and shapes from classic version of this game.
+    """
     def __init__(self):
         super().__init__()
         interactions = {
@@ -56,6 +69,10 @@ class ClassicVersion(BaseVersion):
 
 
 class ExtendedVersion(ClassicVersion):
+    """
+    Class that extend ClassicVersion with more interactions,
+    matchups, shortcuts and shapes.
+    """
     def __init__(self):
         super().__init__()
         interactions = {

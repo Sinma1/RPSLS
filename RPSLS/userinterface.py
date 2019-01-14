@@ -1,7 +1,16 @@
+"""
+File providing classes that connect game and user enviroment
+(Terminal in this case)
+"""
 from versions import ClassicVersion, ExtendedVersion
 
 
 class UserInterface:
+    """
+    Class that is a layer between game and player,
+    class take input and print results to user.
+    Also this class is responsible for flow of the game and main loop.
+    """
     def __init__(self):
         self.version = None
         self.versions = {
@@ -11,17 +20,19 @@ class UserInterface:
 
     def select_version(self):
         while True:
-            v = input("Select desired version of game([C]lassic or [E]xtended): ").lower()
-            if v in self.versions:
-                self.version = self.versions[v]()
+            desired_version = input(
+                "Select desired version of game([C]lassic or [E]xtended): "
+            ).lower()
+            if desired_version in self.versions:
+                self.version = self.versions[desired_version]()
                 break
             print("Not recognized choice.")
 
     def select_shape(self):
         while True:
             print("Select shape")
-            for k, v in self.version.shortcuts.items():
-                print(f"[{k}]: {v.value}", end=' ')
+            for key, value in self.version.shortcuts.items():
+                print(f"[{key}]: {value.value}", end=' ')
 
             print()
             choice = input("What is shape of your choice?: ")
@@ -37,7 +48,7 @@ class UserInterface:
             print("Draw.")
             return
 
-        player_won = True if player == winner else False
+        player_won = player == winner
         interaction = self.version.get_interaction(winner, loser)
         print(f"{winner.value} {interaction} {loser.value}")
         print(f"You", "won." if player_won else "lost.")
